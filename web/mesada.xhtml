@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">    
+    <ui:composition template="/templatelogado.xhtml">
+        <ui:define name="conteudo">
+            <fieldset>
+                <legend>A mesada é...</legend>
+                <br />
+                <h:form id="formCadastro">
+                    <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+                    <h:panelGrid columns="2" cellpadding="2">
+                        <p:outputLabel for="spnValor" value="Valor:" styleClass="lblForm" />
+                        <p:spinner id="spnValor" prefix="R$" min="0.10" value="#{mesadaBean.mesada.valor}"/>
+
+                        <p:outputLabel for="spnMeta" value="Meta:" styleClass="lblForm" />
+                        <p:spinner id="spnMeta" prefix="R$" min="0.10" value="#{mesadaBean.mesada.meta}"/>
+
+                        <p:outputLabel for="spnRecompensa" value="Recompensa:" styleClass="lblForm" />
+                        <p:spinner id="spnRecompensa" prefix="R$" min="0.10" value="#{mesadaBean.mesada.recompensa}"/>
+
+                        <h:inputHidden />
+                        <p:commandButton value="Salvar" action="#{mesadaBean.inserir()}" />
+
+                    </h:panelGrid>
+                </h:form>
+            </fieldset>
+        </ui:define>
+    </ui:composition>
+</html>
+

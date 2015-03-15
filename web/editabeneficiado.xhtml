@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="/templatelogado.xhtml">
+        <ui:define name="conteudo">
+            <fieldset>
+                <legend>Meus Dados</legend>
+                <br />
+                <h:form id="formCadastro">
+                    <h:panelGrid columns="2" cellpadding="2">
+                        <p:outputLabel for="txtNome" value="Nome:" styleClass="lblForm"/>
+                        <p:inputText id="txtNome" value="#{editaBeneficiadoBean.beneficiado.nome}" 
+                                     disabled="#{editaBeneficiadoBean.desabilitaCampos}"/>
+
+                        <p:outputLabel for="txtEmail" value="E-mail:" styleClass="lblForm" />
+                        <p:inputText id="txtEmail" value="#{editaBeneficiadoBean.beneficiado.email}"
+                                     disabled="#{editaBeneficiadoBean.desabilitaCampos}"/>
+
+                        <p:outputLabel for="txtLogin" value="Login:" styleClass="lblForm" />
+                        <p:inputText id="txtLogin" value="#{editaBeneficiadoBean.beneficiado.login}"
+                                     disabled="true"/>
+
+                        <p:outputLabel for="txtSenha" value="Senha:" styleClass="lblForm" />
+                        <p:password  id="txtSenha" value="#{editaBeneficiadoBean.beneficiado.senha}"
+                                     disabled="#{editaBeneficiadoBean.desabilitaCampos}"/>
+
+                        <p:commandButton value="Alterar" ajax="false" action="#{editaBeneficiadoBean.habilitaCampos()}" 
+                                         disabled="#{!editaBeneficiadoBean.desabilitaCampos}"/>
+                        <h:inputHidden />
+                        
+                        <p:commandButton value="Remover" ajax="false" action="#{editaBeneficiadoBean.remover()}"
+                                         disabled="#{editaBeneficiadoBean.desabilitaCampos}"/>
+                        <p:commandButton value="Salvar" ajax="false" action="#{editaBeneficiadoBean.alterar()}" 
+                                         disabled="#{editaBeneficiadoBean.desabilitaCampos}"/>    
+                    </h:panelGrid>
+                </h:form>
+            </fieldset>
+        </ui:define>
+    </ui:composition>
+</html>
+
